@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vapecuan - Pilihan Kawat Terbaik</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS GLOBAL */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #E6E2D3; 
+            color: #4A4A48;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .flex {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        /* 1. HERO SECTION (Latar Belakang Menarik) */
+        .hero {
+            text-align: center;
+            padding: 120px 0;
+            /* Latar belakang gradien metalik modern */
+            background: linear-gradient(135deg, #1a1a1a 0%, #333333 50%, #4A4A48 100%);
+            color: #F2CC59;
+            margin-bottom: 50px;
+            border-bottom: 5px solid #F2CC59;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 10vw, 5rem);
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+        }
+
+        .hero p {
+            color: #E6E2D3;
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        /* BUTTONS */
+        .btn-primary {
+            display: inline-block;
+            background-color: #F2CC59;
+            color: #4A4A48;
+            padding: 15px 40px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(242, 204, 89, 0.4);
+        }
+
+        .btn-dark {
+            display: inline-block;
+            background-color: #4A4A48;
+            color: #fff;
+            padding: 15px 35px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+
+        /* 2. TENTANG KAMI - SLIDER GESER */
+        .about .text-content { flex: 1.2; }
+        
+        .image-content { 
+            flex: 1; 
+            position: relative; 
+            height: 350px; 
+            background-color: #F2CC59; 
+            border-radius: 5px;
+        }
+
+        .slider-box {
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            border-radius: 5px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            background: #fff;
+        }
+
+        .slider-wrapper {
+            display: flex;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slider-wrapper img {
+            min-width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            z-index: 10;
+            border-radius: 50%;
+        }
+        .prev-btn { left: 10px; }
+        .next-btn { right: 10px; }
+
+        /* 3. VISI MISI & TUJUAN */
+        .card { padding: 50px; border-radius: 4px; }
+        .yellow { background-color: #F2CC59; color: #4A4A48; }
+        .misi-list { margin-top: 15px; padding-left: 20px; }
+
+        /* 4. CATEGORIES */
+        .categories { text-align: center; padding: 60px 0; }
+        .main-cat-img { max-width: 600px; width: 100%; margin-top: 20px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+
+        /* 5. FEATURES */
+        .feature-left { flex: 1; padding: 60px; border-radius: 4px; }
+        .feature-right { flex: 1.5; padding-left: 40px; }
+        .feature-item { margin-bottom: 30px; border-bottom: 1px solid rgba(74, 74, 72, 0.2); padding-bottom: 15px; }
+
+        /* 6. FOOTER */
+        .footer { padding: 80px 0 40px 0; border-top: 1px solid rgba(0,0,0,0.1); }
+        .footer-img img { width: 300px; border-radius: 10px; box-shadow: 10px 10px 0px #F2CC59; }
+        .social-footer { text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid rgba(0,0,0,0.1); }
+
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 768px) {
+            .flex, .grid-2 { flex-direction: column; }
+            .hero h1 { font-size: 2.5rem; }
+            .image-content { height: 300px; margin-top: 30px; }
+            .feature-right { padding-left: 0; margin-top: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="container">
+            <h1>Vapecuan</h1>
+            <p>Pilihan pabrikan ritel kawat dan spesialis rebuild UMKM terbaik</p>
+            <a href="#order" class="btn-primary">EXPLORE NOW</a>
+        </div>
+    </header>
+
+    <section class="about">
+        <div class="container flex">
+            <div class="text-content">
+                <h2>Tentang kami</h2>
+                <p>Vapecuan adalah perusahaan manufaktur dan ritel kawat vape terkemuka yang telah berdiri sejak 10 tahun lalu. Dengan pengalaman satu dekade di industri ini, kami berkomitmen untuk menghadirkan kualitas kawat terbaik, mulai dari skala pabrikan hingga spesialis rebuild untuk mendukung kemajuan UMKM di Indonesia. Dedikasi kami terletak pada konsistensi material dan inovasi produk guna memenuhi kebutuhan para vapers.</p>
+            </div>
+            <div class="image-content">
+                <div class="slider-box">
+                    <button class="nav-btn prev-btn" id="prev">&#10094;</button>
+                    <div class="slider-wrapper" id="sliderWrapper">
+                        <img src="kawat1.jpg" alt="Kawat 1">
+                        <img src="kawat2.jpg" alt="Kawat 2">
+                        <img src="kawat3.jpg" alt="Kawat 3">
+                    </div>
+                    <button class="nav-btn next-btn" id="next">&#10095;</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="vision-mission">
+        <div class="container grid-2">
+            <div class="card yellow">
+                <h2>Tujuan</h2>
+                <p>Tujuan utama kami adalah menciptakan harga pasar yang stabil dan kompetitif tanpa mengorbankan kualitas. Kami ingin memastikan bahwa setiap pelaku usaha (UMKM) dan konsumen akhir mendapatkan akses ke produk kawat premium dengan harga yang adil, sehingga ekosistem industri vape di Indonesia tetap sehat dan berkelanjutan.</p>
+            </div>
+            <div class="card yellow">
+                <h2>Visi & misi</h2>
+                <p><strong>Visi:</strong> Menjadi pusat penyedia kawat vape nomor satu di Indonesia yang unggul dan stabil.</p>
+                <ul class="misi-list">
+                    <li>Kualitas Tanpa Kompromi</li>
+                    <li>Stabilitas Ekonomi Pasar</li>
+                    <li>Pemberdayaan UMKM</li>
+                    <li>Inovasi Berkelanjutan</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="categories">
+        <div class="container">
+            <h2>Explore Our Categories</h2>
+            <img src="kawat stainless steel 9.jpg"alt="Kategori Produk" class="main-cat-img">
+        </div>
+    </section>
+
+    <section class="features" id="order">
+        <div class="container flex">
+            <div class="feature-left yellow">
+                <h2>Kenapa Harus kami?</h2>
+                <p>Kami menawarkan beragam pilihan kawat yang dirancang khusus untuk memenuhi kebutuhan pervapean anda.</p>
+            </div>
+            <div class="feature-right">
+                <div class="feature-item">
+                    <h3>Navigasi Mudah</h3>
+                    <p>Katalog produk yang terorganisir untuk memudahkan pencarian kawat yang tepat.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Komunitas Penjual</h3>
+                    <p>Bergabunglah dengan jaringan penjual kawat dari berbagai daerah.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Dukungan Pelanggan</h3>
+                    <p>Tim ahli kami siap membantu konsultasi mengenai spesifikasi kawat untuk device Anda.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container flex">
+            <div class="footer-text">
+                <h3>Join kemitraan & pesan sekarang!</h3>
+                <p>pesan dan dapatkan koneksi anda </p>
+                <a href="https://wa.me/6281213719070" class="btn-dark">CONNECT WITH US</a>
+            </div>
+            <div class="footer-img">
+                <img src="kawat vape.jpg" alt="Roll Kawat">
+            </div>
+        </div>
+        <div class="social-footer">
+            <p>Follow us on social media: @vapecuan</p>
+        </div>
+    </footer>
+
+    <script>
+        const wrapper = document.getElementById('sliderWrapper');
+        const prevBtn = document.getElementById('prev');
+        const nextBtn = document.getElementById('next');
+        
+        let index = 0;
+        const totalImages = wrapper.querySelectorAll('img').length;
+
+        function showSlide(n) {
+            index = (n + totalImages) % totalImages;
+            wrapper.style.transform = `translateX(-${index * 100}%)`;
+        }
+
+        nextBtn.addEventListener('click', () => showSlide(index + 1));
+        prevBtn.addEventListener('click', () => showSlide(index - 1));
+
+        // Geser otomatis setiap 5 detik
+        setInterval(() => showSlide(index + 1), 5000);
+    </script>
+
+</body>
+</html>
